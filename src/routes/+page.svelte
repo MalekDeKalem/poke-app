@@ -3,15 +3,7 @@
     import {loadFiftyPokemon} from "$lib/api";
     import type { PokeItems } from '$lib/types';
 
-    let data: PokeItems = $state([]);
-    const offset = 0;
-
-    onMount(async () => {
-        const res = loadFiftyPokemon(offset);
-        data = await res;
-        $state.snapshot(data);
-    });
-
+    let { data } = $props();
 </script>
 
 
@@ -21,7 +13,7 @@
 </h1>
 
 <ul>
-    {#each data as item, i}
+    {#each data.res as item, i}
         <li id="list-item-${i}"> 
             <a class="text-purple-400" href="/pokemon/{item.name}"> {item.name} </a> 
         </li>
