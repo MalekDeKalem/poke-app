@@ -15,12 +15,12 @@ export const loadFiftyPokemon = async (offset: number): Promise<PokeItems> => {
     return pokemons;
 }
 
-export const loadPokemon = async (id: number) => {
+export const loadPokemon = async (name: string) => {
     // https://pokeapi.co/api/v2/pokemon/{id}
     // https://pokeapi.co/api/v2/pokemon-species/{id}
     // https://pokeapi.co/api/v2/evolutions-chain/{id}
 
-    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`); 
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`); 
     if (!res.ok) throw new Error("Failed to reach api");
 
     const data: PokemonRespose = await res.json();

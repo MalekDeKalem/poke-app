@@ -23,7 +23,7 @@
 <ul>
     {#each data as item, i}
         <li id="list-item-${i}"> 
-            <a class="text-purple-400" href="/pokemon/{i+offset+1}"> {item.name} </a> 
+            <a class="text-purple-400" href="/pokemon/{item.name}"> {item.name} </a> 
         </li>
     {/each}
 </ul>

@@ -13,8 +13,8 @@ export type PokeResponse = {
 };
 
 export type PokeCries = {
-    latest: string?;
-    legacy: string?;
+    latest: string | null;
+    legacy: string | null;
 };
 
 export type PokeForm = {
@@ -70,6 +70,10 @@ export type PokeSpecies = {
     url: string;
 };
 
+export type PokeSprites = {
+    front_default: string | null;
+};
+
 export type PokemonRespose = {
     abilities: PokeAbilities;
     base_experience: number;
@@ -80,4 +84,5 @@ export type PokemonRespose = {
     held_items: PokeHeldItems;
     name: string;
     species: PokeSpecies;
+    sprites: PokeSprites;
 };
