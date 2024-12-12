@@ -4,6 +4,7 @@
     import Pagination from '$lib/components/Pagination.svelte'
     import { page } from '$app/stores'
 
+
     let { data } = $props();
 
     
@@ -19,4 +20,4 @@
     {/each}
 </ul>
 
-<Pagination pageSize={50} totalItems={1000}/>
+<Pagination pageSize={50} totalItems={1000} />
