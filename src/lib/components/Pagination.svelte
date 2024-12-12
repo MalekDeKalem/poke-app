@@ -24,12 +24,16 @@
 </script>
 
 
-<div class="justify-center flex">
+<div class="justify-center flex px-0.5">
     {#each getPageRange(currentPage) as pageNum}
         {#if pageNum === currentPage}
-            <a class="text-lime-600" href="/?limit={pageSize}&offset={pageSize * pageNum}"> {pageNum + 1}</a>
+            <div class="rounded-lg bg-gray-800 size-11 mx-0.5">
+                <a class="text-lime-600 justify-center flex items-center h-full" href="/?limit={pageSize}&offset={pageSize * pageNum}"> {pageNum + 1}</a>
+            </div>
         {:else}
-            <a class="text-rose-600" href="/?limit={pageSize}&offset={pageSize * pageNum}"> {pageNum + 1}</a>
+            <div class="rounded-lg bg-gray-800 size-11 mx-0.5">
+                <a class="text-rose-600 justify-center flex items-center h-full" href="/?limit={pageSize}&offset={pageSize * pageNum}"> {pageNum + 1}</a>
+            </div>
         {/if}
     {/each}
 </div>
