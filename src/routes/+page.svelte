@@ -1,16 +1,13 @@
 <script lang="ts">
     import {onMount} from 'svelte';
-    import {loadFiftyPokemon} from "$lib/api";
     import type { PokeItems } from '$lib/types';
+    import Pagination from '$lib/components/Pagination.svelte'
 
     let { data } = $props();
+    
 </script>
 
 
-
-<h1 class="text-3xl font-bold underline">
-    Hello world!
-</h1>
 
 <ul>
     {#each data.res as item, i}
@@ -19,3 +16,5 @@
         </li>
     {/each}
 </ul>
+
+<Pagination pageSize={50} totalItems={1000} />

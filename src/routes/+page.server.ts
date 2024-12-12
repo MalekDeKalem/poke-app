@@ -1,11 +1,14 @@
 import type {PageServerLoad} from './$types';
 
 
-import { loadFiftyPokemon } from '$lib/api';
+import { loadPokemons } from '$lib/api';
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ url, fetch }) => {
+    const limit = Number(url.searchParams.get('limit')) || 50;
+    const offset = Number(url.searchParams.get('offset')) || 0;
+
     try {
-        const res = await loadFiftyPokemon(0);
+        const res = await loadPokemons(limit, offset);
         return { res };
     } catch(error) {
         console.error('Failed to load fifty Pokemons:', error);

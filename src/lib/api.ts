@@ -1,7 +1,13 @@
 import type { PokeItem, PokeItems, PokemonRespose, PokeResponse } from "$lib/types";
+import { error } from '@sveltejs/kit';
 
-export const loadFiftyPokemon = async (offset: number): Promise<PokeItems> => {
-    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=50&offset=${offset}`);
+export const loadPokemons = async (limit: number = 50, offset: number = 0): Promise<PokeItems> => {
+
+    if (limit > 50) {
+        throw error(400, 'Bad request');
+    }
+
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`);
     if (!res.ok) throw new Error('Failed to reach api');
     
     const data: PokeResponse = await res.json();
