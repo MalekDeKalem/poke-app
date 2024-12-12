@@ -24,18 +24,20 @@
 </script>
 
 
-<div class="justify-center flex px-0.5">
-    {#each getPageRange(currentPage) as pageNum}
-        {#if pageNum === currentPage}
-            <div class="rounded-lg bg-gray-800 size-11 mx-0.5">
-                <a class="text-lime-600 justify-center flex items-center h-full" href="/?limit={pageSize}&offset={pageSize * pageNum}"> {pageNum + 1}</a>
-            </div>
-        {:else}
-            <div class="rounded-lg bg-gray-800 size-11 mx-0.5">
-                <a class="text-rose-600 justify-center flex items-center h-full" href="/?limit={pageSize}&offset={pageSize * pageNum}"> {pageNum + 1}</a>
-            </div>
-        {/if}
-    {/each}
+<div class="justify-center flex">
+    <div class="bg-gradient-to-r from-slate-600 to-slate-400 px-0.5 justify-center flex py-0.5 rounded">
+        {#each getPageRange(currentPage) as pageNum}
+            {#if pageNum === currentPage}
+                <div class="rounded-lg bg-gray-800 size-11 mx-0.5">
+                    <a class="text-lime-600 justify-center flex items-center h-full" href="/?limit={pageSize}&offset={pageSize * pageNum}"> {pageNum + 1}</a>
+                </div>
+            {:else}
+                <div class="rounded-lg bg-gray-800 size-11 mx-0.5">
+                    <a class="text-rose-600 justify-center flex items-center h-full" href="/?limit={pageSize}&offset={pageSize * pageNum}"> {pageNum + 1}</a>
+                </div>
+            {/if}
+        {/each}
+    </div>
 </div>
 
 
