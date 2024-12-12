@@ -24,7 +24,7 @@
 </script>
 
 
-<div>
+<div class="justify-center flex">
     {#each getPageRange(currentPage) as pageNum}
         {#if pageNum === currentPage}
             <a class="text-lime-600" href="/?limit={pageSize}&offset={pageSize * pageNum}"> {pageNum + 1}</a>
