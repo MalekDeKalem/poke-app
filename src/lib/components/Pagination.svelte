@@ -9,7 +9,9 @@
 
 
 <div>
-
+{#each Array(totalPages) as _, idx}
+    <a href="/?limit={pageSize}&offset={pageSize * idx}"> {idx + 1}</a>
+{/each}
 </div>
 
 
