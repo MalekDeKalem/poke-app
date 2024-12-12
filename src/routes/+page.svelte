@@ -2,8 +2,10 @@
     import {onMount} from 'svelte';
     import type { PokeItems } from '$lib/types';
     import Pagination from '$lib/components/Pagination.svelte'
+    import { page } from '$app/stores'
 
     let { data } = $props();
+
     
 </script>
 
@@ -17,4 +19,4 @@
     {/each}
 </ul>
 
-<Pagination pageSize={50} totalItems={1000} />
+<Pagination pageSize={50} totalItems={1000}/>
