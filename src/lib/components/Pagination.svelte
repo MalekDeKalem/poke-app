@@ -25,7 +25,7 @@
 
 
 <div class="justify-center flex">
-    <div class="bg-gradient-to-r from-slate-600 to-slate-400 px-0.5 justify-center flex py-0.5 rounded">
+    <div class="bg-gradient-to-r from-slate-600 to-slate-400 px-0.5 justify-center flex py-0.5 rounded-xl">
         <div class="justify-center flex items-center">
             <!-- svelte-ignore a11y_consider_explicit_label -->
             <a href="/?limit={pageSize}&offset={pageSize * (currentPage-1)}">
