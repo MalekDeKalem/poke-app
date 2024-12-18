@@ -19,5 +19,6 @@
         </li>
     {/each}
 </ul>
-
-<Pagination pageSize={50} totalItems={1000} />
+<div class="z-10 my-2.5">
+    <Pagination pageSize={50} totalItems={1025} />
+</div>
