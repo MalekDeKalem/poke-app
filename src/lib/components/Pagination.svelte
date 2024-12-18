@@ -6,7 +6,7 @@
     let currentPage = $derived((Number($page.url.searchParams.get('offset')) || 0) / pageSize);
 
 
-    let totalPages = $state(totalItems / pageSize);
+    let totalPages = $state(Math.ceil(totalItems / pageSize));
 
     const getPageRange = (current: number) => {
         const halfRange = Math.floor(pagesToShow / 2);
