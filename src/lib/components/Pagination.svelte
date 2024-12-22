@@ -28,9 +28,13 @@
     <div class="bg-gradient-to-r from-slate-600 to-slate-400 px-0.5 justify-center flex py-0.5 rounded-xl">
         <div class="justify-center flex items-center">
             <!-- svelte-ignore a11y_consider_explicit_label -->
-            <a href="/?limit={pageSize}&offset={pageSize * (currentPage-1)}">
+            {#if currentPage === 0}
                 <i class="fa-solid fa-arrow-left fa-2x"></i>
-            </a>
+            {:else}
+                <a href="/?limit={pageSize}&offset={pageSize * (currentPage-1)}">
+                    <i class="fa-solid fa-arrow-left fa-2x"></i>
+                </a>
+            {/if}
         </div>
         {#each getPageRange(currentPage) as pageNum}
             {#if pageNum === currentPage}
@@ -45,9 +49,13 @@
         {/each}
         <div class="justify-center flex items-center">
             <!-- svelte-ignore a11y_consider_explicit_label -->
-            <a href="/?limit={pageSize}&offset={pageSize * (currentPage+1)}">
+            {#if currentPage === totalPages-1}
                 <i class="fa-solid fa-arrow-right fa-2x"></i>
-            </a>
+            {:else}
+                <a href="/?limit={pageSize}&offset={pageSize * (currentPage+1)}">
+                    <i class="fa-solid fa-arrow-right fa-2x"></i>
+                </a>
+            {/if}
         </div>
     </div>
 </div>
