@@ -12,7 +12,7 @@
 
 
 
-<ul>
+<ul  class="grid grid-cols-5 place-items-center">
     {#each data.res as item, i}
         <li id="list-item-${i}"> 
             <a class="text-purple-400" href="/pokemon/{item.name}"> {item.name} </a> 

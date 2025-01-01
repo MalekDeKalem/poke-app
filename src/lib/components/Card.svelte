@@ -1,7 +1,7 @@
 <script lang="ts">
-    let { data } = $props();
+    let { image, name } = $props();
 </script>
 
-<div>
+<div class="rounded-lg">
 
 </div>
