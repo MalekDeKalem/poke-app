@@ -1,5 +1,5 @@
 export type PokeItem = { 
-    name: string; 
+    name: string;
     url: string; 
 };
 
