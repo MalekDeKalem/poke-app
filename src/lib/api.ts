@@ -31,5 +31,5 @@ export const loadPokemon = async (name: string) => {
 
     const data: PokemonRespose = await res.json();
 
-    return data.name;
+    return data;
 }

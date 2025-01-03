@@ -18,7 +18,9 @@
     {#each data.res as item, i}
         <li id="list-item-${i}"> 
             <!-- <a class="text-purple-400" href="/pokemon/{item.name}"> {item.name} </a>  -->
-             <Card name={item.name} />
+            <a href="/pokemon/{item.name}">
+                <Card name={item.name} />
+            </a>
         </li>
     {/each}
 </ul>
