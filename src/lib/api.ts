@@ -21,6 +21,16 @@ export const loadPokemons = async (limit: number = 50, offset: number = 0): Prom
     return pokemons;
 }
 
+export const loadAllPokemons = async () => {
+    const res = await fetch("https://pokeapi.co/api/v2/pokemon/");
+    if (res.ok) {
+        const data = await res.json(); // Parse the JSON from the response
+        window.localStorage.setItem("pokemons", JSON.stringify(data)); // Store the actual data
+    } else {
+        console.error("Failed to fetch Pokémon data", res.statusText);
+    }
+}
+
 export const loadPokemon = async (name: string) => {
     // https://pokeapi.co/api/v2/pokemon/{id}
     // https://pokeapi.co/api/v2/pokemon-species/{id}

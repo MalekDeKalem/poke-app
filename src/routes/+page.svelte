@@ -4,12 +4,14 @@
     import Pagination from '$lib/components/Pagination.svelte'
     import { page } from '$app/stores'
     import Card from '$lib/components/Card.svelte';
+    import { loadAllPokemons } from '$lib/api.js';
 
 
     let { data } = $props();
 
-    console.log(data.res[0])
-    
+    onMount( async () => {
+        await loadAllPokemons();
+    });
 </script>
 
 
@@ -17,7 +19,6 @@
 <ul  class="grid grid-cols-5 place-items-center">
     {#each data.res as item, i}
         <li id="list-item-${i}"> 
-            <!-- <a class="text-purple-400" href="/pokemon/{item.name}"> {item.name} </a>  -->
             <a href="/pokemon/{item.name}">
                 <Card name={item.name} />
             </a>
