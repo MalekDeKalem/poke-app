@@ -3,7 +3,9 @@ export type PokeItem = {
     url: string; 
 };
 
-export type PokeItems = PokeItem[];
+export type PokeItems = {
+    results: PokeItem[]
+};
 
 export type PokeResponse = {
     count: number;
