@@ -28,6 +28,7 @@ export const loadPokemons = (limit: number = 50, offset: number = 0): PokeItems 
         const data = window.localStorage.getItem("pokemons");
         if (data) {
             const res: PokeItems = JSON.parse(data);
+            res.results = res.results.slice(offset, offset+limit);
             return res;
         } else {
             console.error("Nothing in local storage");
@@ -37,16 +38,18 @@ export const loadPokemons = (limit: number = 50, offset: number = 0): PokeItems 
         console.error("window is not defined - running in SSR context");
         return null;
     }
-};
+}
 
 
 export const loadAllPokemons = async () => {
     const res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=100000&offset=0");
-    if (res.ok) {
-        const data = await res.json(); // Parse the JSON from the response
-        window.localStorage.setItem("pokemons", JSON.stringify(data)); // Store the actual data
-    } else {
-        console.error("Failed to fetch Pokémon data", res.statusText);
+    if (!window.localStorage.getItem("pokemon")) {
+        if (res.ok) {
+            const data = await res.json(); // Parse the JSON from the response
+            window.localStorage.setItem("pokemons", JSON.stringify(data)); // Store the actual data
+        } else {
+            console.error("Failed to fetch Pokémon data", res.statusText);
+        }
     }
 }
 
