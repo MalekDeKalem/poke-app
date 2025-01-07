@@ -7,21 +7,23 @@
     import { loadAllPokemons, loadPokemons } from '$lib/api.js';
 
 
-    // let { data } = $props();
-
+    //let { data } = $props();
+    // svelte-ignore non_reactive_update
+    const data = $derived(loadPokemons(Number($page.url.searchParams.get('limit')),Number($page.url.searchParams.get('offset'))));
     onMount( async () => {
         await loadAllPokemons();
     });
 
-    let data = loadPokemons(50, 0);
 
-    console.log(data?.results);
+    // svelte-ignore state_referenced_locally
+        console.log(data);
 
 </script>
 
 
 
 <ul  class="grid grid-cols-5 place-items-center">
+
     {#each data?.results! as item, i}
         <li id="list-item-${i}"> 
             <a href="/pokemon/{item.name}">
@@ -29,6 +31,7 @@
             </a>
         </li>
     {/each}
+
 </ul>
 <div class="z-10 my-2.5">
     <Pagination pageSize={50} totalItems={1025} />
