@@ -9,7 +9,9 @@
 
     //let { data } = $props();
     // svelte-ignore non_reactive_update
-    const data = $derived(loadPokemons(Number($page.url.searchParams.get('limit')),Number($page.url.searchParams.get('offset'))));
+    let limit = $derived(Number($page.url.searchParams.get('limit')) || 50);
+    let offset = $derived(Number($page.url.searchParams.get('offset')) || 0); 
+    const data = $derived(loadPokemons(limit, offset));
     onMount( async () => {
         await loadAllPokemons();
     });
