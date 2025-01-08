@@ -5,6 +5,7 @@
     import { page } from '$app/stores'
     import Card from '$lib/components/Card.svelte';
     import { loadAllPokemons, loadPokemons } from '$lib/api.js';
+    import PokeBallIcon from '$lib/icons/PokeBallIcon.svelte';
 
 
     //let { data } = $props();
@@ -22,8 +23,7 @@
 
 </script>
 
-
-
+<PokeBallIcon />
 <ul  class="grid grid-cols-5 place-items-center">
 
     {#each data?.results! as item, i}
