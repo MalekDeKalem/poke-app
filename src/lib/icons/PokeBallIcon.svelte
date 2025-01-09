@@ -1,6 +1,6 @@
 <script lang="ts">
 
-   let {sizePx = 100} = $props();
+   let {sizePx = 100, color1 = '#EE1515', color2 = '#F0F0F0'} = $props();
 
 </script>
 
@@ -52,13 +52,13 @@
 
       <path
          id="path32"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.15523;stroke-linejoin:miter;stroke-dasharray:17.2419, 4.31047, 2.15523, 4.31047;stroke-dashoffset:0;stroke-opacity:0"
+         style="fill:{color2};fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.15523;stroke-linejoin:miter;stroke-dasharray:17.2419, 4.31047, 2.15523, 4.31047;stroke-dashoffset:0;stroke-opacity:0"
          d="m 137.58413,96.562785 a 7.9375031,5.2848916 0 0 0 -8e-4,0.01318 7.9375031,5.2848916 0 0 0 7.9375,5.284885 7.9375031,5.2848916 0 0 0 7.9375,-5.284885 7.9375031,5.2848916 0 0 0 -6.2e-4,-0.01318 z" 
       />
 
       <path
          id="path32-6"
-         style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.15523;stroke-linejoin:miter;stroke-dasharray:17.2419, 4.31047, 2.15523, 4.31047;stroke-dashoffset:0;stroke-opacity:0"
+         style="fill:{color1};fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.15523;stroke-linejoin:miter;stroke-dasharray:17.2419, 4.31047, 2.15523, 4.31047;stroke-dashoffset:0;stroke-opacity:0"
          d="m 153.45753,88.65671 a 7.9375031,5.2848916 0 0 0 8e-4,-0.0132 7.9375031,5.2848916 0 0 0 -7.9375,-5.28488 7.9375031,5.2848916 0 0 0 -7.9375,5.28488 7.9375031,5.2848916 0 0 0 6.2e-4,0.0132 z" 
       />
 

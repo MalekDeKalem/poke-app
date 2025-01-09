@@ -23,7 +23,6 @@
 
 </script>
 
-<PokeBallIcon />
 <ul  class="grid grid-cols-5 place-items-center">
 
     {#each data?.results! as item, i}
