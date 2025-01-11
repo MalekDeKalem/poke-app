@@ -1,7 +1,7 @@
 <script lang="ts">
     import PokeBallIcon from "$lib/icons/PokeBallIcon.svelte";
 
-    let { image="s", name } = $props();
+    let { name } = $props();
 
 
     const rand = (min: number, max: number) => {
