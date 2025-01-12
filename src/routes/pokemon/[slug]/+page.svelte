@@ -8,7 +8,8 @@
 
 
 <div>
-    <p> This is the Pokémon page of ... {data.pokemon.name} </p>
+    <h1 class="flex justify-center font-bold text-2xl"> {data.pokemon.name.toUpperCase()} </h1>
+    <hr class="rounded-lg border-2">
     <img alt="picture of pokemon {data.pokemon.name}" src="{data.pokemon.sprites.front_default}"/>
     <p> His height is {data.pokemon.height}</p>
     <figure>
