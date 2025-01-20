@@ -1,6 +1,6 @@
 <script lang="ts">
 
-   let {sizePx = 100, color1 = '#EE1515', color2 = '#F0F0F0', rotInnerCircle = 0} = $props();
+   let {sizePx = 150, color1 = '#EE1515', color2 = '#F0F0F0', rotInnerCircle = 0} = $props();
 
 </script>
 

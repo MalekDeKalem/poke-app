@@ -23,7 +23,7 @@
 
 </script>
 
-<ul  class="grid desktop:grid-cols-5 tablet:grid-cols-5 phone:grid-cols-1 place-items-center">
+<ul  class="grid desktop:grid-cols-5 tablet:grid-cols-3 phone:grid-cols-1 place-items-center">
     {#each data?.results! as item, i}
         <li id="list-item-${i}"> 
             <a href="/pokemon/{item.name}">
