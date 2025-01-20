@@ -23,8 +23,7 @@
 
 </script>
 
-<ul  class="grid grid-cols-5 place-items-center">
-
+<ul  class="grid desktop:grid-cols-5 tablet:grid-cols-5 phone:grid-cols-1 place-items-center">
     {#each data?.results! as item, i}
         <li id="list-item-${i}"> 
             <a href="/pokemon/{item.name}">
@@ -32,7 +31,6 @@
             </a>
         </li>
     {/each}
-
 </ul>
 <div class="z-10 my-2.5">
     <Pagination pageSize={50} totalItems={1025} />
