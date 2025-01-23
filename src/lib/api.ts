@@ -43,7 +43,7 @@ export const loadPokemons = (limit: number = 50, offset: number = 0): PokeItems 
 
 export const loadAllPokemons = async () => {
     const res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=100000&offset=0");
-    if (!window.localStorage.getItem("pokemon")) {
+    if (!window.localStorage.getItem("pokemons")) {
         if (res.ok) {
             const data = await res.json(); // Parse the JSON from the response
             window.localStorage.setItem("pokemons", JSON.stringify(data)); // Store the actual data

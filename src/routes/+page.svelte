@@ -6,25 +6,29 @@
     import Card from '$lib/components/Card.svelte';
     import { loadAllPokemons, loadPokemons } from '$lib/api.js';
     import PokeBallIcon from '$lib/icons/PokeBallIcon.svelte';
+    import { writable } from 'svelte/store';
 
+    export const pokeStore = writable(JSON.parse('{"results": []}'));
 
-    //let { data } = $props();
     // svelte-ignore non_reactive_update
     let limit = $derived(Number($page.url.searchParams.get('limit')) || 50);
     let offset = $derived(Number($page.url.searchParams.get('offset')) || 0); 
-    const data = $derived(loadPokemons(limit, offset));
-    onMount( async () => {
-        await loadAllPokemons();
+    const data = $derived($pokeStore);
+
+    onMount(async () => {
+        const storedData = localStorage.getItem("pokemons");
+        if (storedData) {
+            pokeStore.set(JSON.parse(storedData));
+        } else {
+            await loadAllPokemons();
+        }
     });
 
-
-    // svelte-ignore state_referenced_locally
-        console.log(data);
 
 </script>
 
 <ul  class="grid desktop:grid-cols-5 tablet:grid-cols-3 phone:grid-cols-1 place-items-center">
-    {#each data?.results! as item, i}
+    {#each data.results.slice(offset, limit+offset) as item, i}
         <li id="list-item-${i}"> 
             <a href="/pokemon/{item.name}">
                 <Card name={item.name} />
