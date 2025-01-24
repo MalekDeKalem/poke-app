@@ -7,6 +7,7 @@
     import { loadAllPokemons, loadPokemons } from '$lib/api.js';
     import PokeBallIcon from '$lib/icons/PokeBallIcon.svelte';
     import { writable } from 'svelte/store';
+    import TopBar from '$lib/components/TopBar.svelte';
 
     export const pokeStore = writable(JSON.parse('{"results": []}'));
 
@@ -26,6 +27,8 @@
 
 
 </script>
+
+<TopBar />
 
 <ul  class="grid desktop:grid-cols-5 tablet:grid-cols-3 phone:grid-cols-1 place-items-center">
     {#each data.results.slice(offset, limit+offset) as item, i}
