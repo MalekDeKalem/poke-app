@@ -8,8 +8,7 @@
     import PokeBallIcon from '$lib/icons/PokeBallIcon.svelte';
     import { writable } from 'svelte/store';
     import TopBar from '$lib/components/TopBar.svelte';
-
-    export const pokeStore = writable(JSON.parse('{"results": []}'));
+    import { pokeStore } from '$lib/stores';
 
     // svelte-ignore non_reactive_update
     let limit = $derived(Number($page.url.searchParams.get('limit')) || 50);
