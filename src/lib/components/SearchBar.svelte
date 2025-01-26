@@ -1,22 +1,25 @@
 <script lang="ts">
     import { pokeStore } from "$lib/stores";
-    import type { PokeItems, PokeResponse } from "$lib/types";
+    import type { PokeItem, PokeItems, PokeResponse } from "$lib/types";
 
     let query = $state<string>("");
 
         
-    const handleInput = (event: any) => {
+    const handleInput = () => {
         pokeStore.update((store: PokeResponse) => {
-            const filteredResults = store.results.results.filter((item) =>
-                item.name.toLowerCase().includes(query) // Filter results by name
-            );
+        const filteredResults: PokeItem[] = store.results.results.filter((item: PokeItem) =>
+            item.name.toLowerCase().includes(query.toLowerCase())
+        );
 
-            return {
-                ...store, // Spread the rest of the store properties (count, next, previous)
-                results: filteredResults // Update results with filtered array
-            };
-        });
-    }
+        return {
+            ...store, // Spread other properties (count, next, previous)
+            results: {
+                ...store.results, // Preserve any additional properties in `PokeItems`
+                results: filteredResults, // Update the `results` array within `PokeItems`
+            },
+        };
+    });
+};
 
 
 
@@ -25,5 +28,5 @@
 
 
 <div>
-    <input onchange={handleInput} type="text" placeholder="search" bind:value={query} class="rounded-lg h-9" />
+    <input oninput={handleInput} type="search" placeholder="search" bind:value={query} class="rounded-lg h-9" />
 </div>

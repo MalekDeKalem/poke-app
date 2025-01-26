@@ -5,3 +5,4 @@ import type { PokeResponse } from './types';
 
 
 export const pokeStore = writable(JSON.parse('{"results": []}'));
+export const queryStore = writable<string>("");
