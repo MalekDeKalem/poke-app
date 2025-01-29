@@ -2,6 +2,7 @@
     import { onMount } from 'svelte';
     import { page } from '$app/stores';
     import { loadPokemon } from '$lib/api';
+    import PokemonCard from '$lib/components/PokemonCard.svelte';
 
     let { data } = $props()
 </script>
@@ -21,4 +22,5 @@
             <audio class="rounded-lg" controls src={data.pokemon.cries.legacy}></audio>
         {/if}
     </figure>
+    <PokemonCard />
 </div>
