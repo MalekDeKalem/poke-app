@@ -12,11 +12,13 @@
 
 		const init = () => {
 			scene = new THREE.Scene();
-			camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-
+			camera = new THREE.PerspectiveCamera( 75, window.innerWidth / (window.innerHeight * 1.5), 0.1, 1000 );
+			const canvas = document.getElementById("canvas");
 			renderer = new THREE.WebGLRenderer({antialias: true, canvas: el});
-			renderer.setSize( window.innerWidth, window.innerHeight );
+			renderer.setSize(canvas?.clientWidth! * 0.8, canvas?.clientHeight! * 1.5);
 			document.body.appendChild( renderer.domElement );
+
+			console.log(canvas?.clientHeight);
 
 			const geometry = new THREE.BoxGeometry( 1, 1, 1 );
 			const material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
@@ -47,6 +49,6 @@
 
 </script>
 
-<canvas bind:this={el}>
+<canvas class="h-[500px] relative top-0 bottom-0 left-0 right-0 m-auto" id="canvas" bind:this={el}>
 
 </canvas>
