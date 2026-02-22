@@ -17,10 +17,12 @@
 
 		const init = () => {
 			scene = new THREE.Scene();
-			camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const width = el.clientWidth;
+      const height = el.clientHeight;
+			camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
 
 			renderer = new THREE.WebGLRenderer({ antialias: true, canvas: el });
-			renderer.setSize(window.innerWidth, window.innerHeight);
+			renderer.setSize(width, height, false);
 			renderer.setPixelRatio(window.devicePixelRatio);
 			
 			// Cube setup
@@ -39,6 +41,8 @@
 		const animate = () => {
 			requestAnimationFrame(animate);
 
+      resizeCanvas();
+
 			cube.rotation.x += 0.005;
 			cube.rotation.y += 0.05;
 			cube.rotation.z += 0.1;
@@ -50,11 +54,14 @@
 		const resizeCanvas = () => {
 			if (!el) return;
 
-			const width = window.innerWidth;
-			const height = window.innerHeight;
-			renderer.setSize(width, height);
-			camera.aspect = width / height;
-			camera.updateProjectionMatrix();
+			const width = el.clientWidth;
+			const height = el.clientHeight;
+
+      if (el.width !== width || el.height !== height) {
+        renderer.setSize(width, height, false);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+      }
 		};
 
 		init();
@@ -65,7 +72,7 @@
 
 </script>
 
-<canvas class="laptop:h-[500px] relative top-0 bottom-0 left-0 right-0 m-auto" id="canvas" bind:this={el}>
+<canvas class="laptop:h-[500px] max-w-full h-auto bg-white border" id="canvas" bind:this={el}>
 
 </canvas>
 

@@ -22,9 +22,10 @@
             <audio class="rounded-lg" controls src={data.pokemon.cries.legacy}></audio>
         {/if}
     </figure>
-
-    <div class="text-center flex justify-center">
+   
+    <div class="grid place-items-center">
+      <div class="w-1/2 border-4 border-red-400 grid place-items-center">
         <PokemonCard />
+      </div>
     </div>
-
 </div>
