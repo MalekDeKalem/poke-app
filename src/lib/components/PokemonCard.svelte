@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import * as THREE from "three";
   import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+  import type { GLTF } from "three/examples/jsm/loaders/GLTFLoader.js";
 
   let el = $state<HTMLCanvasElement>();
   let { textureImage } = $props();
@@ -15,6 +16,7 @@
     let camera: THREE.PerspectiveCamera;
     let scene: THREE.Scene;
     let renderer: THREE.WebGLRenderer;
+    let card: GLTF;
 
     const init = async () => {
       scene = new THREE.Scene();
@@ -25,8 +27,12 @@
       renderer = new THREE.WebGLRenderer({ antialias: true, canvas: el });
       renderer.setSize(width, height, false);
       renderer.setPixelRatio(window.devicePixelRatio);
-      const light = new THREE.AmbientLight(0xffffff);
+      const light = new THREE.AmbientLight(0x6f6f6f);
+      const sceneLight = new THREE.SpotLight(0xffffff);
+      sceneLight.position.set(1.5, 3, 0);
+      sceneLight.castShadow = true;
       scene.add(light);
+      scene.add(sceneLight);
 
       const textureLoader = new THREE.TextureLoader();
       const texture = await textureLoader.loadAsync(textureImage);
@@ -36,7 +42,7 @@
       texture.colorSpace = THREE.SRGBColorSpace;
 
       const loader = new GLTFLoader();
-      const card = await loader.loadAsync("/models/PokeCard.glb");
+      card = await loader.loadAsync("/models/PokeCard.glb");
 
       card.scene.traverse((child) => {
         if (child instanceof THREE.Mesh && child.name === "Plane_2") {
@@ -47,7 +53,7 @@
           });
         }
       });
-
+      card.scene.position.set(0, 0, 0);
       scene.add(card.scene);
 
       camera.position.x = 2;
@@ -61,7 +67,7 @@
 
     const animate = () => {
       requestAnimationFrame(animate);
-
+      card.scene.rotation.y += 0.001;
       resizeCanvas();
 
       render();
