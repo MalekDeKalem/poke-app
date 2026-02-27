@@ -44,8 +44,10 @@
       const loader = new GLTFLoader();
       card = await loader.loadAsync("/models/PokeCard.glb");
 
+      console.log(card);
+
       card.scene.traverse((child) => {
-        if (child instanceof THREE.Mesh && child.name === "Plane_2") {
+        if (child instanceof THREE.Mesh && child.name === "Plane_1") {
           console.log("Mesh:", child.name);
           child.material = new THREE.MeshBasicMaterial({
             map: texture,
@@ -67,7 +69,9 @@
 
     const animate = () => {
       requestAnimationFrame(animate);
-      card.scene.rotation.y += 0.001;
+      if (card) {
+        card.scene.rotation.y += 0.01;
+      }
       resizeCanvas();
 
       render();
